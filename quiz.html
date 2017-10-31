@@ -27,25 +27,25 @@
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonA" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer">I need to do groceries</button>
+        <button id="buttonA" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer" onclick ="Streak0()">I need to do groceries</button>
       </div>
       <div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonB" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#correctAnswer">I need to take out the trash</button>
+        <button id="buttonB" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#correctAnswer" onclick ="StreakAdd()">I need to take out the trash</button>
       </div>
       <div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonC" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer">I need to wash the dishes</button>
+        <button id="buttonC" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer" onclick ="Streak0()">I need to wash the dishes</button>
       </div>
       <div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonD" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer">I need to do laundry</button>
+        <button id="buttonD" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer" onclick ="Streak0()">I need to do laundry</button>
       </div>
     </div>
 
@@ -62,9 +62,10 @@
           </div>
         </div>
       </div>
+
     </div>
 
-    <!-- Modal for the correct answer-->
+    <!-- Modal for the incorrect answer-->
     <div id="incorrectAnswer" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
@@ -80,6 +81,24 @@
     </div>
 
   </body>
+  <!-- Streak Handler-->
+  <script>
+
+    function StreakAdd(){
+
+        var result = parseInt(localStorage.getItem("StreakNum")) + 1
+        var resultS = result.toString();
+
+        localStorage.setItem("StreakNum", resultS);
+
+
+    }
+
+    function Streak0(){
+        localStorage.setItem("StreakNum",0);
+    }
+  </script>
+
 
   <!-- JS -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

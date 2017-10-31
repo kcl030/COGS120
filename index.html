@@ -6,8 +6,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/counterstyle.css"/>
     <title>ReMemo Homepage</title>
   <head>
+
+  <!-- Script to make counter fancy    NOT WORKING -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    <script src = "js/counter-count.js"> </script>
+
 
   <body style="background-color: lightyellow;">
 
@@ -36,6 +43,29 @@
     </div>
   </body>
 
+  <!--Streak Count -->
+
+  <div class="counter">
+    <div class="container">
+        <div class="row">
+          <div class="col-4">
+          </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="streak">
+                    <p class="streak-p">Streak!</p>
+                    <p class="counter-count" id = "StreakResult"</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+
   <!-- JS -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -44,4 +74,13 @@
   <script src="js/bootstrap.min.js"></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+
+  <!--Streak PUll -->
+      <script>
+         document.getElementById("StreakResult").innerHTML =
+      localStorage.getItem("StreakNum");
+      </script>
+
+
 </html>
