@@ -1,0 +1,87 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+<title>ReMemo Quiz</title>
+<head>
+  <body style="background-color: lightyellow;">
+
+    <!-- Logo -->
+    <div class="container">
+      <div class="row">
+        <div style="font-family: 'Cedarville Cursive', cursive; font-size: 150px; margin: 0 auto;">
+          ReMemo
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz answers are buttons with modals-->
+    <div class="container">
+      <div class="row">
+        <button id="buttonA" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#incorrectAnswer">I need to do groceries</button>
+      </div>
+      <div class="row">
+        <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
+      </div>
+      <div class="row">
+        <button id="buttonB" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#correctAnswer">I need to take out the trash</button>
+      </div>
+      <div class="row">
+        <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
+      </div>
+      <div class="row">
+        <button id="buttonC" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#incorrectAnswer">I need to wash the dishes</button>
+      </div>
+      <div class="row">
+        <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
+      </div>
+      <div class="row">
+        <button id="buttonD" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#incorrectAnswer">I need to do laundry</button>
+      </div>
+    </div>
+
+    <!-- Modal for the correct answer-->
+    <div id="correctAnswer" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1>You have fantastic memory!</h1>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for the correct answer-->
+    <div id="incorrectAnswer" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1>Yikes you need to improve your memory!</h1>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src ="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="js/ie10-viewport-bug-workaround.js"></script>
+</html>
