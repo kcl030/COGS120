@@ -21,6 +21,53 @@
       </div>
     </div>
 
+		<!-- List Items -->
+		<div class="container">
+			<div class="row">
+        <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
+      </div>
+			<div class="row">
+				<ul class="tasklist">
+					<li class="task">
+						<span>I need to <em><strong>walk the dog</strong></em>.
+						<button class="remove" type="button" class"btn btn-sm" data-target="#removeTask">Remove</button></span>
+					</li>
+					<br>
+					<li class="task">
+						<span>I need to <em><strong>pick up my prescriptions</strong></em>.
+						<button class="remove" type="button" class"btn btn-sm" data-target="#removeTask">Remove</button></span>
+					</li>
+					<br>
+					<li class="task">
+						<span>I need to <em><strong>buy new shoes<strong></em>.
+							<button class="remove" type="button" class"btn btn-sm" data-target="#removeTask">Remove</button></span>
+					</li>
+				</ul>
+			</div>
+			<div class="row">
+        <button id="AddTaskbutton" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addTask">Add Task</button>
+      </div>
+		</div>
+
+		<!-- Modal for Adding task-->
+    <div id="addTask" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1>Add Task</h1>
+						<form action="/action_page.php">
+  						Task: <input type="text" name="fname"><br>
+						</form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+          </div>
+        </div>
+      </div>
+
+
   <!-- JS -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>

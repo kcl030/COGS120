@@ -116,6 +116,22 @@ ol ul,
 ul ol {
   margin-bottom: 0; }
 
+
+ul.tasklist {
+	list-style-type: square;
+	padding: 40px;
+	margin: 20px;
+}
+
+li.task {
+	color: orange;
+}
+
+li.task span {
+	color: black;
+}
+
+
 dt {
   font-weight: bold; }
 
@@ -1731,6 +1747,10 @@ fieldset[disabled] a.btn {
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem; }
+
+.btn-inline {
+	display: inline-flex;
+}
 
 .btn-block {
   display: block;
