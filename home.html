@@ -6,9 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="css/bootstrap.css"/>
-
-    <link rel="stylesheet" href="css/signin.css"/>
-    <title>ReMemo Login</title>
+    <link rel="stylesheet" href="css/counterstyle.css"/>
+    <title>ReMemo Homepage</title>
   <head>
 
   <!-- Script to make counter fancy    NOT WORKING -->
@@ -34,31 +33,40 @@
         <div class="col-4">
         </div>
         <div class="col-4">
-
-          <form class="form-signin" action ="home.html">
-            <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me"> Remember me
-              </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          </form>
+          <a href="myTask.html" class="btn btn-lg btn-warning">My Tasks</a>
+          <a href="quiz.html" class="btn btn-lg btn-warning">Quiz Me!</a>
+          <a href="journal.html" class="btn btn-lg btn-warning">Journal</a>
         </div>
         <div class="col-4">
         </div>
       </div>
     </div>
+
+
+  <!--Streak Count -->
+
+    <div class="counter">
+      <div class="container">
+          <div class="row">
+            <div class="col-4">
+            </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                  <div class="streak">
+                      <p class="streak-p">Streak!</p>
+                      <p class="counter-count" id = "StreakResult"</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-4">
+          </div>
+      </div>
+    </div>
+
   </body>
 
+
+
   <!-- JS -->
-
-
-
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -68,6 +76,11 @@
   <script src="js/ie10-viewport-bug-workaround.js"></script>
 
 
+  <!--Streak PUll -->
+      <script>
+         document.getElementById("StreakResult").innerHTML =
+      localStorage.getItem("StreakNum");
+      </script>
 
 
 </html>

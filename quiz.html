@@ -14,7 +14,7 @@
     <!-- The header of the page -->
     <div class="container">
       <div class="row">
-        <a href="index.html"><img src="backbutton.png" height="75" width="75"/></a>
+        <a href="home.html"><img src="backbutton.png" height="75" width="75"/></a>
         <div style="font-family: 'Cedarville Cursive', cursive; font-size: 150px; margin: 0 auto;">
           Quiz
         </div>
@@ -86,11 +86,9 @@
 
     function StreakAdd(){
 
-        var result = parseInt(localStorage.getItem("StreakNum")) + 1
+        var result = parseInt(localStorage.getItem("StreakNum")) + 1 ;
         var resultS = result.toString();
-
         localStorage.setItem("StreakNum", resultS);
-
 
     }
 
