@@ -26,27 +26,22 @@
 			<div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
-			<div class="row">
-				<ul class="tasklist">
-					<li class="task">
-						<span>I need to <em><strong>walk the dog</strong></em>.
-						<button class="remove" type="button" class"btn btn-sm" data-target="#removeTask">X</button></span>
-					</li>
-					<br>
-					<li class="task">
-						<span>I need to <em><strong>pick up my prescriptions</strong></em>.
-						<button class="remove" type="button" class"btn btn-sm" data-target="#removeTask">X</button></span>
-					</li>
-					<br>
-					<li class="task">
-						<span>I need to <em><strong>buy new shoes<strong></em>.
-							<button class="remove" type="button" class"btn btn-sm" data-target="#removeTask">X</button></span>
-					</li>
-				</ul>
-			</div>
+
+			<!-- Handlebars template for tasks -->
+				<script id="task-template" type="text/x-handlebars-template">
+					<div class="task" id="task{{this}}">
+						<li> <span> {{task}} </span> </li>
+					</div>
+				</script>
+
+			<ul id="myTaskList">
+				<!-- local task list will be inserted here -->
+			</ul>
+
 			<div class="row">
         <button id="AddTaskbutton" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addTask">Add Task</button>
       </div>
+
 		</div>
 
 		<!-- Modal for Adding task-->
@@ -56,24 +51,71 @@
         <div class="modal-content">
           <div class="modal-body">
             <h1>Add Task</h1>
-						<form action="/action_page.php">
-  						Task: <input type="text" name="fname"><br>
+						<form id="addTask" action="/myTask.html">
+  						<label>Task: <br> </label><input type="text" name="newTask" id="newTask">
 						</form>
+						<br>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Add</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="addTask()">Add</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
           </div>
         </div>
       </div>
+		</div>
+
+			<!-- storing and removing tasks -->
+			<script>
+				// local array
+				var taskArray = JSON.parse(localStorage.getItem("localArray"));
+				if (taskArray == null) {
+					taskArray = new Array;
+				}
+
+				//Add task function
+				function addTask() {
+					var taskToAdd = "{\"task\": \"" + document.getElementById("newTask").value + "\", \"index\": \"" + taskArray.length+ "\"}";
+					taskArray.push(taskToAdd);
+					var stringArray = JSON.stringify(taskArray);
+					localStorage.setItem("localArray", stringArray);
+					document.getElementById("newTask").value = "";
+					location.reload();
+				}
+
+				//Remove task function
+				function removeTask(y) {
+					var taskToRemove = document.getElementById(y);
+					for (var a = 0; a < taskArray.length; a++) {
+						var comp = taskArray[a];
+						if (y == comp) {
+							taskArray[a] = null;
+							taskArray.resetList(a);
+						}
+					}
+				}
+
+				// Helper to move tasks up in the array
+				function resetList(x) {
+					var arrayToSet = this;
+					for (var d = x; d < arrayToSet.length - 1; d++) {
+						arrayToSet[d] = arrayToSet [d+1];
+					}
+				}
+
+			</script>
 
 
   <!-- JS -->
+	<script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src ="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+	<script src="js/handlebars-v4.0.11.js"></script>
+	<script src="js/MyTask.js"></script>
+
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>
