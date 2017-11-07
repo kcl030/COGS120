@@ -29,8 +29,8 @@
 
 			<!-- Handlebars template for tasks -->
 				<script id="task-template" type="text/x-handlebars-template">
-					<div class="task" id="task{{index}}">
-						<li> <span> {{this}} </span>
+					<div class="tasks">
+						<li> <span id="task"> {{this}} </span>
 						<button type="button" class="btn btn-sm" onclick="removeTask({{this}})">X</button>
 						</li>
 					</div>
@@ -76,7 +76,7 @@
 
 				//Add task function
 				function addTask() {
-					var taskToAdd = "{\"task\":\"" + document.getElementById("newTask").value + "\", \"index\":\"" + taskArray.length+ "\"}";
+					var taskToAdd = document.getElementById("newTask").value;
 					taskArray.push(taskToAdd);
 					var stringArray = JSON.stringify(taskArray);
 					localStorage.setItem("localArray", stringArray);
@@ -86,12 +86,12 @@
 
 				//Remove task function
 				function removeTask(theTask) {
-					taskString = JSON.stringify(theTask)
+					taskString = JSON.stringify(theTask);
 					prompt(taskString);
 					for (var a = 0; a < taskArray.length; a++) {
 						var comp = taskArray[a];
 						prompt(comp);
-						if (comp === taskString) {
+						if (comp == taskString) {
 							prompt("worked");
 							taskArray.resetList(a);
 							localStorage.setItem("localArray",taskArray);
