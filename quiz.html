@@ -95,6 +95,38 @@
     function Streak0(){
         localStorage.setItem("StreakNum",0);
     }
+
+    //generates the random questions to be asked in the quiz
+    function randomQuestions() {
+      var question = new Array(10)
+      question[0] = "I need to do groceries";
+      question[1] = "I need to fold clothes";
+      question[2] = "I need to do the dishes";
+      question[3] = "I need to do the laundry";
+      question[4] = "I need to cook dinner";
+      question[5] = "I need to water the plants";
+      question[6] = "I need to vacuum";
+      question[7] = "I need to go to the gym";
+      question[8] = "I need to pay the bills";
+      question[9] = "I need to get a haircut";
+      question[10] = "I need to make lunch";
+
+      var randomNum = Math.floor(Math.random()*question.length);
+      return question[randomNum];
+    }
+
+    var q1 = randomQuestions();
+    var q2 = randomQuestions();
+    var q3 = randomQuestions();
+    while (q1 == q2 || q1 == q3 || q2 == q3) {
+      q1 = randomQuestions();
+      q2 = randomQuestions();
+      q3 = randomQuestions();
+    }
+
+    document.getElementById("buttonA").innerHTML = q1;
+    document.getElementById("buttonC").innerHTML = q2;
+    document.getElementById("buttonD").innerHTML = q3;
   </script>
 
 
