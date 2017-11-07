@@ -71,7 +71,7 @@
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-          <div class="modal-body">
+          <div id="correction" class="modal-body">
             <h1>Yikes you need to improve your memory!</h1>
           </div>
           <div class="modal-footer">
@@ -168,6 +168,7 @@
     document.getElementById("button" + incorrect2).innerHTML = q2;
     document.getElementById("button" + incorrect3).innerHTML = q3;
 
+    document.getElementById("correction").innerHTML = "Yikes you need to improve your memory! The correct answer is " + correctIndex + " \"I need to take out the trash\"";
   </script>
 
 
