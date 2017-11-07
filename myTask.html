@@ -29,8 +29,10 @@
 
 			<!-- Handlebars template for tasks -->
 				<script id="task-template" type="text/x-handlebars-template">
-					<div class="task" id="task{{this}}">
-						<li> <span> {{task}} </span> </li>
+					<div class="task" id="task{{index}}">
+						<li> <span> {{this}} </span>
+						<button id="RemoveButton" type="button" class="btn btn-sm" data-toggle="modal" data-target="#removeTask">X</button>
+						</li>
 					</div>
 				</script>
 
@@ -64,6 +66,22 @@
       </div>
 		</div>
 
+		<!-- Modal for Removing task -->
+		<div id="removeTask" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-body">
+						<h1>Remove Task?</h1>
+						<br> </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeTask()">Yes</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 			<!-- storing and removing tasks -->
 			<script>
 				// local array
@@ -83,8 +101,8 @@
 				}
 
 				//Remove task function
-				function removeTask(y) {
-					var taskToRemove = document.getElementById(y);
+				function removeTask(taskID) {
+					var taskToRemove = document.getElementById(taskID);
 					for (var a = 0; a < taskArray.length; a++) {
 						var comp = taskArray[a];
 						if (y == comp) {
