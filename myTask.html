@@ -31,7 +31,7 @@
 				<script id="task-template" type="text/x-handlebars-template">
 					<div class="task" id="task{{index}}">
 						<li> <span> {{this}} </span>
-						<button type="button" class="btn btn-sm" data-toggle="modal" data-target="#removeTask">X</button>
+						<button type="button" class="btn btn-sm" onclick="removeTask({{this}})">X</button>
 						</li>
 					</div>
 				</script>
@@ -66,22 +66,6 @@
       </div>
 		</div>
 
-		<!-- Modal for Removing task -->
-		<div id="removeTask" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-body">
-						<h1>Remove Task?</h1>
-						<br> </div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="removeTask()">Yes</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
 			<!-- storing and removing tasks -->
 			<script>
 				// local array
@@ -92,7 +76,7 @@
 
 				//Add task function
 				function addTask() {
-					var taskToAdd = "{\"task\": \"" + document.getElementById("newTask").value + "\", \"index\": \"" + taskArray.length+ "\"}";
+					var taskToAdd = "{\"task\":\"" + document.getElementById("newTask").value + "\", \"index\":\"" + taskArray.length+ "\"}";
 					taskArray.push(taskToAdd);
 					var stringArray = JSON.stringify(taskArray);
 					localStorage.setItem("localArray", stringArray);
@@ -101,16 +85,23 @@
 				}
 
 				//Remove task function
-				function removeTask(taskID) {
-					var taskToRemove = document.getElementById(taskID);
+				function removeTask(theTask) {
+					taskString = JSON.stringify(theTask)
+					prompt(taskString);
 					for (var a = 0; a < taskArray.length; a++) {
 						var comp = taskArray[a];
-						if (y == comp) {
-							taskArray[a] = null;
+						prompt(comp);
+						if (comp === taskString) {
+							prompt("worked");
 							taskArray.resetList(a);
+							localStorage.setItem("localArray",taskArray);
 							break;
 						}
+						else {
+							continue;
+						}
 					}
+					location.reload();
 				}
 
 				// Helper to move tasks up in the array
