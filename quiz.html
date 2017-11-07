@@ -6,6 +6,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <link rel="stylesheet" href="css/bootstrap.css"/>
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <title>ReMemo Quiz</title>
   <head>
 
@@ -27,25 +28,25 @@
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonA" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer" onclick ="Streak0()">I need to do groceries</button>
+        <button id="buttonA" type="button" class="btn btn-warning btn-block" data-toggle="modal"></button>
       </div>
       <div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonB" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#correctAnswer" onclick ="StreakAdd()">I need to take out the trash</button>
+        <button id="buttonB" type="button" class="btn btn-warning btn-block" data-toggle="modal"></button>
       </div>
       <div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonC" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer" onclick ="Streak0()">I need to wash the dishes</button>
+        <button id="buttonC" type="button" class="btn btn-warning btn-block" data-toggle="modal"></button>
       </div>
       <div class="row">
         <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
       </div>
       <div class="row">
-        <button id="buttonD" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#incorrectAnswer" onclick ="Streak0()">I need to do laundry</button>
+        <button id="buttonD" type="button" class="btn btn-warning btn-block" data-toggle="modal"></button>
       </div>
     </div>
 
@@ -96,6 +97,18 @@
         localStorage.setItem("StreakNum",0);
     }
 
+    //randomizes the index of the button
+    function randomButton() {
+      var buttonIndex = new Array(3);
+      buttonIndex[0] = "A"
+      buttonIndex[1] = "B"
+      buttonIndex[2] = "C"
+      buttonIndex[3] = "D"
+
+      var randomNum = Math.floor(Math.random()*buttonIndex.length);
+      return buttonIndex[randomNum];
+    }
+
     //generates the random questions to be asked in the quiz
     function randomQuestions() {
       var question = new Array(10)
@@ -115,6 +128,7 @@
       return question[randomNum];
     }
 
+    //ensure no duplicates for random incorrect answers
     var q1 = randomQuestions();
     var q2 = randomQuestions();
     var q3 = randomQuestions();
@@ -124,9 +138,36 @@
       q3 = randomQuestions();
     }
 
-    document.getElementById("buttonA").innerHTML = q1;
-    document.getElementById("buttonC").innerHTML = q2;
-    document.getElementById("buttonD").innerHTML = q3;
+    //ensures no duplicates for random index of buttons
+    var correctIndex = randomButton();
+    var incorrect1 = randomButton();
+    var incorrect2 = randomButton();
+    var incorrect3 = randomButton();
+    while(correctIndex == incorrect1 || correctIndex == incorrect2 || correctIndex == incorrect3 ||
+          incorrect1 == incorrect2 || incorrect1 == incorrect3 || incorrect2 == incorrect3) {
+      correctIndex = randomButton();
+      incorrect1 = randomButton();
+      incorrect2 = randomButton();
+      incorrect3 = randomButton();
+    }
+
+    //change attribute of correct answer for streak and popup
+    $("#button" + correctIndex).attr('data-target','#correctAnswer');
+    $('#button' + correctIndex).attr('onclick','StreakAdd()');
+
+    //change attribute of incorrect answers for streak and popup
+    $('#button' + incorrect1).attr('data-target','#incorrectAnswer');
+    $('#button' + incorrect1).attr('onclick','Streak0()');
+    $('#button' + incorrect2).attr('data-target','#incorrectAnswer');
+    $('#button' + incorrect2).attr('onclick','Streak0()');
+    $('#button' + incorrect3).attr('data-target','#incorrectAnswer');
+    $('#button' + incorrect3).attr('onclick','Streak0()');
+
+    document.getElementById("button" + correctIndex).innerHTML = "I need to take out the trash";
+    document.getElementById("button" + incorrect1).innerHTML = q1;
+    document.getElementById("button" + incorrect2).innerHTML = q2;
+    document.getElementById("button" + incorrect3).innerHTML = q3;
+
   </script>
 
 
