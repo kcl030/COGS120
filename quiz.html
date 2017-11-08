@@ -97,6 +97,13 @@
         localStorage.setItem("StreakNum",0);
     }
 
+		function randomCorrect() {
+			var answerStrings = localStorage.getItem("localArray");
+			var answerArray = JSON.parse(answerStrings);
+			var randoNum = Math.floor(Math.random()*answerArray.length);
+			return answerArray[randoNum];
+		}
+
     //randomizes the index of the button
     function randomButton() {
       var buttonIndex = new Array(3);
@@ -163,7 +170,7 @@
     $('#button' + incorrect3).attr('data-target','#incorrectAnswer');
     $('#button' + incorrect3).attr('onclick','Streak0()');
 
-    document.getElementById("button" + correctIndex).innerHTML = "I need to take out the trash";
+    document.getElementById("button" + correctIndex).innerHTML = randomCorrect;
     document.getElementById("button" + incorrect1).innerHTML = q1;
     document.getElementById("button" + incorrect2).innerHTML = q2;
     document.getElementById("button" + incorrect3).innerHTML = q3;
