@@ -100,7 +100,13 @@
 		function randomCorrect() {
 			var answerStrings = localStorage.getItem("localArray");
 			var answerArray = JSON.parse(answerStrings);
+
+			if (answerArray == null) {
+				return "No tasks!";
+			}
+
 			var randoNum = Math.floor(Math.random()*answerArray.length);
+
 			return answerArray[randoNum];
 		}
 
@@ -134,6 +140,8 @@
       var randomNum = Math.floor(Math.random()*question.length);
       return question[randomNum];
     }
+
+		var randomCorrectQ = randomCorrect();
 
     //ensure no duplicates for random incorrect answers
     var q1 = randomQuestions();
@@ -170,7 +178,7 @@
     $('#button' + incorrect3).attr('data-target','#incorrectAnswer');
     $('#button' + incorrect3).attr('onclick','Streak0()');
 
-    document.getElementById("button" + correctIndex).innerHTML = randomCorrect;
+    document.getElementById("button" + correctIndex).innerHTML = randomCorrectQ;
     document.getElementById("button" + incorrect1).innerHTML = q1;
     document.getElementById("button" + incorrect2).innerHTML = q2;
     document.getElementById("button" + incorrect3).innerHTML = q3;

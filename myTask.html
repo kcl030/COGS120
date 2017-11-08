@@ -30,8 +30,8 @@
 			<!-- Handlebars template for tasks -->
 				<script id="task-template" type="text/x-handlebars-template">
 					<div class="tasks">
-						<li> <span id="task"> {{this}} </span>
-						<button type="button" class="btn btn-sm" onclick="removeTask({{this}})">X</button>
+						<li> <span> {{this}} </span>
+						<button type="button" class="btn btn-sm" onclick="removeTask({{task}})">X</button>
 						</li>
 					</div>
 				</script>
@@ -86,7 +86,6 @@
 
 				//Remove task function
 				function removeTask(theTask) {
-					prompt("ok");
 					var taskString = JSON.stringify(theTask);
 					prompt(theTask);
 					for (var a = 0; a < taskArray.length; a++) {
