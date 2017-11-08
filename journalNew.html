@@ -44,13 +44,10 @@
       <div class="row">
         <script>
 
-
           localStorage.setItem("DeletedArray", JSON.stringify(["I need to take out trash","I need to walk the dog"]));       // debugging line.
-
 
           var JournalArray1  =  localStorage.getItem("DeletedArray");                                                        //CHANGE THIS ARRAY NAME
           var JournalArray = JSON.parse(JournalArray1);
-
 
           for(var t in JournalArray){
 
@@ -61,17 +58,11 @@
             var InfoCol = document.createElement('div');
             InfoCol.className = 'col-3';
 
-
             var newJTask = document.createElement('li');
             newJTask.className = "task";
             newJTask.innerHTML = JournalArray[t];
-
-
             InfoCol.appendChild(newJTask);
-
-
             Container.appendChild(InfoCol);
-
             document.body.appendChild(Container)
           }
 
@@ -93,20 +84,16 @@
           close[i].onclick = function() {
             var div = this.parentElement;
             div.style.display = "none";
+
+            JournalArray.splice(i, 1);    //removes from Journal Array
           }
           }
+
         </script>
 
         </ul>
       </div>
     </div>
-
-
-
-
-
-
-
   </body>
 
   <!-- JS -->
