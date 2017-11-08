@@ -41,10 +41,10 @@
 			</ul>
 
 			<div class="row">
-        <button id="AddTaskbutton" type="button" class="btn btn-warning btn-custom-block" data-toggle="modal" data-target="#addTask">Add Task</button>
-        <td bgcolor="#FFFFFF" style="line-width:5px;" colspan=3>&nbsp;</td>
-				<button id="ClearTaskbutton" type="button" class="btn btn-warning btn-custom-block" data-toggle="modal" onclick="removeAll()">Clear Tasks</button>
+				  <button id="ClearTaskbutton" type="button" class="btn btn-warning btn-block" data-toggle="modal" onclick="removeAll()">Clear All Tasks</button>
+        <button id="AddTaskbutton" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addTask">Add Task</button>
       </div>
+
 		</div>
 
 		<!-- Modal for Adding task-->
@@ -112,7 +112,7 @@
 				}
 
 				function removeAll() {
-					//localStorage.setItem("DeletedArray", "localArray");
+					localStorage.setItem("DeletedArray", "localArray");
 					localStorage.setItem("localArray", null);
 					location.reload();
 				}
