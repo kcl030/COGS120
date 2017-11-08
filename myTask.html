@@ -112,7 +112,7 @@
 				}
 
 				function removeAll() {
-					//var stringArray = JSON.stringify(taskArray);
+					localStorage.setItem("DeletedArray", "localArray");
 					localStorage.setItem("localArray", null);
 					location.reload();
 				}
