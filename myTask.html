@@ -86,12 +86,11 @@
 
 				//Remove task function
 				function removeTask(theTask) {
-					taskString = JSON.stringify(theTask);
-					prompt(taskString);
+					prompt("ok");
+					var taskString = JSON.stringify(theTask);
+					prompt(theTask);
 					for (var a = 0; a < taskArray.length; a++) {
-						var comp = taskArray[a];
-						prompt(comp);
-						if (comp == taskString) {
+						if (taskArray[a] == taskString) {
 							prompt("worked");
 							taskArray.resetList(a);
 							localStorage.setItem("localArray",taskArray);
