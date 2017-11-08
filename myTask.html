@@ -113,7 +113,7 @@
 				}
 
 				function removeAll() {
-					localStorage.setItem("DeletedArray", "localArray");
+					localStorage.setItem("DeletedArray", JSON.parse(JSON.stringify(localStorage.getItem("localArray"))));
 					localStorage.setItem("localArray", null);
 					location.reload();
 				}
