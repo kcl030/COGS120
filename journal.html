@@ -25,7 +25,7 @@
 
         <div class="col-4">
         </div>
-        <div class="col-4">
+        <div id="emptyJournal" class="col-4">
           <p id="demo"></p>
           <script>
             //document.getElementById("demo").innerHTML = Date();
@@ -56,14 +56,17 @@
           var JournalArray1  =  localStorage.getItem("DeletedArray");                                                        //CHANGE THIS ARRAY NAME
           var JournalArray = JSON.parse(JournalArray1);
 
+          if (JournalArray == null) {
+            document.getElementById("emptyJournal").innerHTML = "You do not have anything in your Journal";
+          }
+
           if (JournalArray[0] == null || JournalArray1 == null || JournalArray1 == 0 || JournalArray[0] == 0 ) {      //buggy if refreshed.
 
               var Nothing = document.createElement('div')
-
-              document.body.append("You do not have anything in your Journal");    //Buggy on refresh
+              document.getElementById("emptyJournal").innerHTML = "You do not have anything in your Journal";
+              //document.body.append("You do not have anything in your Journal");    //Buggy on refresh
 
           }
-
 
           for(var t in JournalArray){
 
@@ -116,7 +119,8 @@
             localStorage.setItem("DeletedArray", JSON.stringify(newJournal));
 
             if (JournalArray[0] == null || JournalArray1 == null || JournalArray1 == 0 || JournalArray[0] == 0 ) {
-                document.body.append("You do not have anything in your Journal");    //Buggy on refresh
+              document.getElementById("emptyJournal").innerHTML = "You do not have anything in your Journal";
+                //document.body.append("You do not have anything in your Journal");    //Buggy on refresh
             }
 
           }
