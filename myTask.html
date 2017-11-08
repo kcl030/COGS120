@@ -30,8 +30,8 @@
 			<!-- Handlebars template for tasks -->
 				<script id="task-template" type="text/x-handlebars-template">
 					<div class="tasks">
-						<li> <span> {{this}} </span>
-						<button type="button" class="btn btn-sm" onclick="removeTask({{task}})">X</button>
+						<li>{{this}}
+						<!--- <button type="button" class="btn btn-sm" onclick="removeAll()">X</button> -->
 						</li>
 					</div>
 				</script>
@@ -41,6 +41,7 @@
 			</ul>
 
 			<div class="row">
+				  <button id="ClearTaskbutton" type="button" class="btn btn-warning btn-block" data-toggle="modal" onclick="removeAll()">Clear All Tasks</button>
         <button id="AddTaskbutton" type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addTask">Add Task</button>
       </div>
 
@@ -87,7 +88,7 @@
 				//Remove task function
 				function removeTask(theTask) {
 					var taskString = JSON.stringify(theTask);
-					prompt(theTask);
+					prompt(taskString);
 					for (var a = 0; a < taskArray.length; a++) {
 						if (taskArray[a] == taskString) {
 							prompt("worked");
@@ -108,6 +109,12 @@
 					for (var d = x; d < arrayToSet.length - 1; d++) {
 						arrayToSet[d] = arrayToSet [d+1];
 					}
+				}
+
+				function removeAll() {
+					//var stringArray = JSON.stringify(taskArray);
+					localStorage.setItem("localArray", null);
+					location.reload();
 				}
 
 			</script>
